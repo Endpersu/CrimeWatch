@@ -274,25 +274,40 @@ View CrimeCaseListView — возвращает 200 и содержит паги
 ## Структура проекта
 
 ```
-crimewatch/
-├── core/               # основное приложение
-│   ├── models.py
-│   ├── views.py
-│   ├── forms.py
-│   ├── admin.py
-│   └── tests.py
+crimewatch/                     # корень проекта
+│
+├── core/                       # основное приложение
+│   ├── __init__.py
+│   ├── models.py               # модели CrimeType, Category, CrimeCase
+│   ├── views.py                # CBV: ListView, DetailView, CreateView и т.д.
+│   ├── forms.py                # CrimeCaseForm
+│   ├── admin.py                # кастомизация админки
+│   ├── urls.py                 # маршруты приложения
+│   └── tests.py                # unit-тесты
+│
+├── crimewatch/                 # основной конфиг Django
+│   ├── __init__.py
+│   ├── settings.py             # настройки + .env
+│   ├── urls.py                 # подключение core.urls
+│   └── wsgi.py / asgi.py
+│
 ├── templates/
 │   └── core/
-│       ├── base.html
-│       ├── case_list.html
-│       ├── case_detail.html
-│       └── case_form.html
+│       ├── base.html           # базовый шаблон с навигацией и стилями
+│       ├── case_list.html      # список дел + фильтры слева
+│       ├── case_detail.html    # детальная страница дела
+│       └── case_form.html      # форма создания/редактирования
+│
 ├── static/
-│   └── css/
-│       └── style.css
+│   ├── css/
+│   │   └── style.css           # кастомные стили (тёмная тема, карточки)
+│   └── js/                     # (опционально) для поиска/фильтрации
+│
 ├── logs/
-│   └── crime_watch.log
-├── .env
+│   └── crime_watch.log         # файл логов (создаётся автоматически)
+│
+├── .env                        # SECRET_KEY, DB настройки и т.д.
+├── .gitignore
 ├── manage.py
-└── requirements.txt
+└── requirements.txt            # Django, psycopg2, python-decouple
 ```
