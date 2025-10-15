@@ -311,6 +311,3 @@ crimewatch/                     # корень проекта
 ├── manage.py
 └── requirements.txt            # Django, psycopg2, python-decouple
 ```
-
-
-hello world\
