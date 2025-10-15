@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="case-detail">
+    <h1>{{ case.title }}</h1>
+    <div class="tags">
+        {% for cat in case.categories.all %}
+            <span class="tag">{{ cat.name }}</span>
+        {% endfor %}
+        <span class="tag">{{ case.crime_type.name }}</span>
+    </div>
+
+    <div class="case-content">
+        <div class="main-text">
+            <p>{{ case.description }}</p>
+            <p><strong>Дата:</strong> {{ case.date_occurred }}</p>
+            <p><strong>Место:</strong> {{ case.location }}</p>
+            <p><strong>Статус:</strong> {% if case.is_solved %}Раскрыто{% else %}Не раскрыто{% endif %}</p>
+        </div>
+        <div class="sidebar">
+            <h3>Сводка</h3>
+            <p><strong>Тип:</strong> {{ case.crime_type.name }}</p>
+            <p><strong>Категории:</strong> {{ case.categories.all|join:", " }}</p>
+            <p><strong>Добавлено:</strong> {{ case.created_at|date:"d.m.Y" }}</p>
+            <!-- Кнопки: PDF, Поделиться и т.д. -->
+        </div>
+    </div>
+</div>
+{% endblock %}
