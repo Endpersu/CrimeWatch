@@ -11,9 +11,14 @@ def home_view(request):
     return render(request, 'home.html')
 
 
+def about_view(request):
+    """Страница 'О проекте'"""
+    return render(request, 'about.html')
+
+
 class CrimeCaseListView(ListView):
     model = CrimeCase
-    template_name = 'core/case_list.html'
+    template_name = 'case_list.html'
     context_object_name = 'cases'
     paginate_by = 10
 

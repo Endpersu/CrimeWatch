@@ -357,3 +357,41 @@ h1, h2, h3, h4, h5 {
   color: white;
   border-color: var(--accent-blue);
 }
+
+/* Страница "О проекте" */
+.about-page {
+  padding: 2rem 0;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.about-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-bright);
+}
+
+.about-content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-content li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-box {
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.contact-box h3 {
+  margin-bottom: 1rem;
+  color: var(--accent-blue);
+}
