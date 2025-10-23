@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}CrimeWatch — Главная{% endblock %}
+
+{% block content %}
+  <div class="hero">
+    <h1>CrimeWatch</h1>
+    <div class="hero-buttons">
+      <a href="{% url 'case_list' %}?crime_type=1" class="btn btn-crime">Преступления</a>
+      <a href="{% url 'case_list' %}?crime_type=2" class="btn btn-cyber">Киберпреступления</a>
+    </div>
+  </div>
+{% endblock %}

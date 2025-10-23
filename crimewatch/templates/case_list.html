@@ -1,63 +1,109 @@
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
+
+{% block title %}Список дел — CrimeWatch{% endblock %}
 
 {% block content %}
-<div class="container">
-    <aside class="filters">
-        <form method="get">
-            <input type="text" name="search" placeholder="Поиск..." value="{{ request.GET.search }}">
-            <h4>Тип преступления</h4>
-            {% for ct in crime_types %}
-                <label><input type="radio" name="crime_type" value="{{ ct.id }}" {% if request.GET.crime_type == ct.id|stringformat:"i" %}checked{% endif %}> {{ ct.name }}</label>
-            {% endfor %}
-            <h4>Категории</h4>
-            {% for cat in categories %}
-                <label><input type="checkbox" name="categories" value="{{ cat.id }}" {% if cat.id|stringformat:"i" in request.GET.categories %}checked{% endif %}> {{ cat.name }}</label>
-            {% endfor %}
-            <label><input type="checkbox" name="is_solved" value="True" {% if request.GET.is_solved == "True" %}checked{% endif %}> Раскрыто</label>
-            <button type="submit">Применить</button>
-            <a href="{% url 'case_list' %}">Сбросить</a>
-        </form>
-    </aside>
+  <div class="container">
+    <h2>Список дел</h2>
 
-    <div class="cases-grid">
-        {% for case in cases %}
-            <div class="case-card">
-                <div class="tags">
-                    {% if case.crime_type.name == "Киберпреступления" %}
-                        <span class="tag cyber">Кибер</span>
-                    {% endif %}
-                    {% for cat in case.categories.all %}
-                        {% if cat.name == "Жестокое" %}
-                            <span class="tag brutal">Жестокое</span>
-                        {% elif cat.name == "Неразгаданное" %}
-                            <span class="tag unsolved">Неразгаданное</span>
-                        {% else %}
-                            <span class="tag">Обычное</span>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <h3>{{ case.title }}</h3>
-                <p>{{ case.description|truncatewords:20 }}</p>
-                <small>{{ case.date_occurred }} • {{ case.location }}</small>
-                <a href="{% url 'case_detail' case.pk %}">Подробнее</a>
-            </div>
-        {% empty %}
-            <p>Дел не найдено.</p>
-        {% endfor %}
+    <!-- Боковая панель фильтров -->
+    <div class="sidebar">
+      <h3>Фильтры</h3>
+      <form method="GET">
+        <div>
+          <label>Тип преступления:</label>
+          <select name="crime_type">
+            <option value="">Все</option>
+            <option value="1" {% if request.GET.crime_type == "1" %}selected{% endif %}>Физические</option>
+            <option value="2" {% if request.GET.crime_type == "2" %}selected{% endif %}>Киберпреступления</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Категории:</label>
+          <div>
+            <input type="checkbox" name="categories" value="1" id="cat1" {% if "1" in request.GET.categories %}checked{% endif %}>
+            <label for="cat1">Обычные</label>
+          </div>
+          <div>
+            <input type="checkbox" name="categories" value="2" id="cat2" {% if "2" in request.GET.categories %}checked{% endif %}>
+            <label for="cat2">Жестокие</label>
+          </div>
+          <div>
+            <input type="checkbox" name="categories" value="3" id="cat3" {% if "3" in request.GET.categories %}checked{% endif %}>
+            <label for="cat3">Неразгаданные</label>
+          </div>
+        </div>
+
+        <div>
+          <label>Статус:</label>
+          <select name="is_solved">
+            <option value="">Все</option>
+            <option value="1" {% if request.GET.is_solved == "1" %}selected{% endif %}>Раскрыто</option>
+            <option value="0" {% if request.GET.is_solved == "0" %}selected{% endif %}>Не раскрыто</option>
+          </select>
+        </div>
+
+        <div>
+          <input type="text" name="q" placeholder="Поиск по заголовку..." value="{{ request.GET.q }}">
+        </div>
+
+        <button type="submit">Применить</button>
+        <a href="{% url 'case_list' %}" class="btn-reset">Сбросить</a>
+      </form>
     </div>
-</div>
 
-<div class="pagination">
-    {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; Первая</a>
-        <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
-    {% endif %}
+    <!-- Основная область -->
+    <div class="main-content-area">
+      <!-- Сортировка -->
+      <div class="sort-bar">
+        <span>Сортировать по:</span>
+        <a href="?{% if request.GET.crime_type %}crime_type={{ request.GET.crime_type }}&{% endif %}{% if request.GET.categories %}categories={{ request.GET.categories|join:'&categories=' }}&{% endif %}{% if request.GET.is_solved %}is_solved={{ request.GET.is_solved }}&{% endif %}order=date">Дата ▼</a>
+        <a href="#">Популярности</a>
+        <a href="#">Статусу</a>
+      </div>
 
-    <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+      <!-- Карточки дел -->
+      <div class="case-grid">
+        {% for case in cases %}
+          <div class="case-card">
+            <h3>{{ case.title }}</h3>
+            <div class="tags">
+              {% for cat in case.categories.all %}
+                <span class="tag tag-{{ cat.slug }}">{{ cat.name }}</span>
+              {% endfor %}
+            </div>
+            <p>{{ case.description|truncatewords:20 }}</p>
+            <small>{{ case.date_occurred }} • {{ case.location }}</small>
+            <a href="{% url 'case_detail' case.pk %}" class="btn-more">Подробнее</a>
+          </div>
+        {% empty %}
+          <p>Нет дел по заданным фильтрам.</p>
+        {% endfor %}
+      </div>
 
-    {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
-    {% endif %}
-</div>
+      <!-- Пагинация -->
+      {% if cases.has_other_pages %}
+        <div class="pagination">
+          {% if cases.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ cases.previous_page_number }}">← Предыдущая</a>
+          {% endif %}
+
+          {% for i in cases.paginator.page_range %}
+            {% if cases.number == i %}
+              <span class="current">{{ i }}</span>
+            {% else %}
+              <a href="?page={{ i }}">{{ i }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if cases.has_next %}
+            <a href="?page={{ cases.next_page_number }}">Следующая →</a>
+            <a href="?page={{ cases.paginator.num_pages }}">Последняя &raquo;</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}

@@ -1,31 +1,85 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}CrimeWatch{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% load static %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}CrimeWatch{% endblock %}</title>
+
+  <!-- Шрифты -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <!-- Навигация -->
-    <nav class="navbar">
-        <div class="nav-logo">CrimeWatch</div>
-        <ul class="nav-menu">
-            <li><a href="{% url 'case_list' %}">Главная</a></li>
-            <!-- Добавить выпадающие меню позже -->
-        </ul>
-        <div class="nav-user">
-            {% if user.is_authenticated %}
-                <span>Привет, {{ user.username }}</span>
-                <a href="{% url 'admin:logout' %}">Выйти</a>
-            {% else %}
-                <a href="{% url 'admin:login' %}">Войти</a>
-            {% endif %}
-        </div>
-    </nav>
+  <!-- 🔝 Фиксированная шапка -->
+  <header class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <a href="{% url 'case_list' %}">👁️ CrimeWatch</a>
+      </div>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+      <nav class="navbar-menu">
+        <a href="{% url 'case_list' %}">Главная</a>
+
+        <!-- Преступления -->
+        <div class="dropdown">
+          <span>Преступления ▼</span>
+          <div class="dropdown-content">
+            <a href="{% url 'case_list' %}?crime_type=1&categories=1">Обычные дела</a>
+            <a href="{% url 'case_list' %}?crime_type=1&categories=2">Жестокие дела</a>
+            <a href="{% url 'case_list' %}?crime_type=1&categories=3">Неразгаданные дела</a>
+            <a href="{% url 'case_list' %}?crime_type=1">Все дела</a>
+          </div>
+        </div>
+
+        <!-- Киберпреступления -->
+        <div class="dropdown">
+          <span>Киберпреступления ▼</span>
+          <div class="dropdown-content">
+            <a href="{% url 'case_list' %}?crime_type=2&categories=1">Обычные</a>
+            <a href="{% url 'case_list' %}?crime_type=2&categories=2">Жестокие</a>
+            <a href="{% url 'case_list' %}?crime_type=2&categories=3">Неразгаданные</a>
+            <a href="{% url 'case_list' %}?crime_type=2">Все кибердела</a>
+          </div>
+        </div>
+
+        <a href="#">Статистика</a>
+        <a href="#">О проекте</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <button class="search-toggle">🔍</button>
+        {% if user.is_authenticated %}
+          <div class="user-menu">
+            <span>👤 {{ user.username }}</span>
+            <div class="dropdown-content">
+              <a href="#">Профиль</a>
+              <a href="{% url 'admin:logout' %}">Выход</a>
+            </div>
+          </div>
+        {% else %}
+          <a href="{% url 'admin:login' %}" class="btn-login">Войти</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <!-- 📰 Основной контент -->
+  <main class="main-content">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- 📜 Подвал (опционально) -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 CrimeWatch. Все дела — для общественной безопасности.</p>
+    </div>
+  </footer>
+
+  {% block extra_js %}{% endblock %}
 </body>
 </html>
