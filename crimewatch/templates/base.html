@@ -80,44 +80,6 @@
     </div>
   </footer>
 
-  <!-- Загрузочный экран -->
-<div id="loader" class="loader-overlay">
-  <div class="loader-content">
-    <h2>👁️ CrimeWatch</h2>
-    <div class="loader-progress">
-      <span id="loader-percent">0%</span>
-    </div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progress-fill"></div>
-    </div>
-    <p>Loading..</p>
-  </div>
-</div>
 
-<!-- JavaScript для анимации загрузки -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const loader = document.getElementById('loader');
-  const percentElement = document.getElementById('loader-percent');
-  const progressFill = document.getElementById('progress-fill');
-
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.random() * 5;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
-      setTimeout(() => {
-        loader.classList.add('hidden');
-      }, 300);
-    }
-
-    percentElement.textContent = Math.floor(progress) + '%';
-    progressFill.style.width = progress + '%';
-  }, 100);
-});
-</script>
-
-  {% block extra_js %}{% endblock %}
 </body>
 </html>
