@@ -138,3 +138,26 @@ WARNING 2025-10-29 13:30:27,264 log Method Not Allowed (GET): /logout/
 INFO 2025-10-29 13:39:17,283 autoreload Watching for file changes with StatReloader
 WARNING 2025-10-29 13:39:31,977 log Method Not Allowed (GET): /logout/
 INFO 2025-10-29 13:39:47,097 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 13:47:51,596 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 13:48:09,915 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 13:48:16,337 log Method Not Allowed (GET): /logout/
+WARNING 2025-10-29 13:51:58,719 log Method Not Allowed (GET): /logout/
+INFO 2025-10-29 13:55:03,716 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\urls.py changed, reloading.
+INFO 2025-10-29 13:55:04,706 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 13:55:28,807 log Method Not Allowed (GET): /logout/
+WARNING 2025-10-29 13:55:37,440 log Method Not Allowed (GET): /logout/
+INFO 2025-10-29 13:58:35,430 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\urls.py changed, reloading.
+INFO 2025-10-29 13:58:36,152 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 13:58:45,656 log Method Not Allowed (GET): /logout/
+INFO 2025-10-29 13:59:02,388 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\urls.py changed, reloading.
+INFO 2025-10-29 13:59:03,077 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 13:59:27,819 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\views.py changed, reloading.
+INFO 2025-10-29 13:59:28,736 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 13:59:40,893 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\views.py changed, reloading.
+INFO 2025-10-29 13:59:41,626 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 13:59:44,230 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\views.py changed, reloading.
+INFO 2025-10-29 13:59:44,981 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 13:59:47,523 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\views.py changed, reloading.
+INFO 2025-10-29 13:59:48,576 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 13:59:59,640 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\urls.py changed, reloading.
+INFO 2025-10-29 14:00:00,541 autoreload Watching for file changes with StatReloader

@@ -9,6 +9,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.urls import reverse_lazy
 from .forms import CustomUserCreationForm
+from django.contrib.auth import logout
+
+
+def custom_logout_view(request):
+    logout(request)  # Удаляем сессию
+    return redirect('/')  # Перенаправляем на главную (через GET)
 
 
 def home_view(request):
