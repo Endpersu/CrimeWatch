@@ -12,6 +12,10 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth import logout
 
 
+def secret_deltarune_view(request):
+    return render(request, 'secret_deltarune.html')
+
+
 def custom_logout_view(request):
     logout(request)  # Удаляем сессию
     return redirect('/')  # Перенаправляем на главную (через GET)

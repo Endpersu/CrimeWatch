@@ -685,3 +685,30 @@ h1, h2, h3, h4, h5 {
   color: #aaa;
   font-family: 'Roboto', sans-serif;
 }
+
+/* Секретная кнопка — пасхалка */
+.secret-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(30, 30, 36, 0.7);
+  color: #ff0000;
+  text-decoration: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  z-index: 100;
+  transition: all 0.2s ease;
+  border: 1px solid #444;
+}
+
+.secret-button:hover {
+  background: rgba(50, 50, 60, 0.9);
+  color: #ff3333;
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
