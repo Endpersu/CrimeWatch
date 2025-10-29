@@ -97,3 +97,36 @@ INFO 2025-10-23 11:22:44,021 autoreload Watching for file changes with StatReloa
 INFO 2025-10-23 11:27:30,866 autoreload Watching for file changes with StatReloader
 INFO 2025-10-23 11:30:22,184 autoreload Watching for file changes with StatReloader
 INFO 2025-10-23 11:30:32,692 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 10:43:36,554 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 10:43:41,435 log Not Found: /favicon.ico
+INFO 2025-10-29 11:20:21,801 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 11:22:02,047 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+ERROR 2025-10-29 11:22:15,311 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\Student4-2\Desktop\django\CrimeWatch\.venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'core'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Student4-2\Desktop\django\CrimeWatch\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Student4-2\Desktop\django\CrimeWatch\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\views.py", line 30, in register_view
+    return redirect('core:home')
+  File "C:\Users\Student4-2\Desktop\django\CrimeWatch\.venv\Lib\site-packages\django\shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Student4-2\Desktop\django\CrimeWatch\.venv\Lib\site-packages\django\shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\Student4-2\Desktop\django\CrimeWatch\.venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'core' is not a registered namespace
+WARNING 2025-10-29 11:22:15,386 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-10-29 11:25:44,448 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\views.py changed, reloading.
+INFO 2025-10-29 11:25:45,142 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 11:26:07,071 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-29 11:26:15,277 log Not Found: /.well-known/appspecific/com.chrome.devtools.json

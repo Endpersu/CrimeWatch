@@ -6,5 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view, name='home'),
     path('cases/', views.CrimeCaseListView.as_view(), name='case_list'),
-    path('about/', views.about_view, name='about')
+    path('about/', views.about_view, name='about'),
+    path('register/', views.register_view, name='register'),
 ]
