@@ -162,3 +162,4 @@ INFO 2025-10-29 13:59:48,576 autoreload Watching for file changes with StatReloa
 INFO 2025-10-29 13:59:59,640 autoreload C:\Users\Student4-2\Desktop\django\CrimeWatch\crimewatch\core\urls.py changed, reloading.
 INFO 2025-10-29 14:00:00,541 autoreload Watching for file changes with StatReloader
 INFO 2025-10-29 14:06:14,240 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 14:14:02,286 autoreload Watching for file changes with StatReloader

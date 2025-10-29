@@ -555,3 +555,43 @@ h1, h2, h3, h4, h5 {
   0% { top: 0; }
   100% { top: 100%; }
 }
+
+/* Пульсация для кнопок на главной */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(204, 0, 0, 0);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes pulseGlowBlue {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(74, 144, 226, 0);
+    transform: scale(1.02);
+  }
+}
+
+.btn-crime.pulse {
+  animation: pulseGlow 2.5s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.btn-cyber.pulse {
+  animation: pulseGlowBlue 2.5s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Небольшой hover-эффект для усиления интерактивности */
+.btn-crime:hover,
+.btn-cyber:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
