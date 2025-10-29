@@ -478,3 +478,64 @@ h1, h2, h3, h4, h5 {
   color: var(--accent-blue);
   text-decoration: none;
 }
+
+/* Меню пользователя */
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-name {
+  color: var(--text-light);
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-name:hover,
+.user-name:focus {
+  text-decoration: underline;
+  color: var(--accent-blue);
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--bg-card);
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 1001;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin-top: 4px;
+  padding: 0.5rem 0;
+}
+
+/* Показать меню при наведении на .user-menu */
+.user-menu:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  color: var(--text-light);
+  padding: 0.75rem 1.5rem;
+  display: block;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  font-size: 0.95rem;
+}
+
+.dropdown-menu a:hover {
+  background-color: #2a2a30;
+  color: var(--accent-blue);
+}

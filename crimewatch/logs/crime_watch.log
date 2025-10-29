@@ -130,3 +130,11 @@ INFO 2025-10-29 11:25:44,448 autoreload C:\Users\Student4-2\Desktop\django\Crime
 INFO 2025-10-29 11:25:45,142 autoreload Watching for file changes with StatReloader
 WARNING 2025-10-29 11:26:07,071 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-10-29 11:26:15,277 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-10-29 11:33:31,721 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 11:38:53,764 log Not Found: /favicon.ico
+INFO 2025-10-29 13:24:11,213 autoreload Watching for file changes with StatReloader
+INFO 2025-10-29 13:30:18,624 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 13:30:27,264 log Method Not Allowed (GET): /logout/
+INFO 2025-10-29 13:39:17,283 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-29 13:39:31,977 log Method Not Allowed (GET): /logout/
+INFO 2025-10-29 13:39:47,097 autoreload Watching for file changes with StatReloader
