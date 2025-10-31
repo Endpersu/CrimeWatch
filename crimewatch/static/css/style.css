@@ -686,7 +686,6 @@ h1, h2, h3, h4, h5 {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Секретная кнопка — пасхалка */
 .secret-button {
   position: fixed;
   bottom: 20px;
@@ -704,6 +703,8 @@ h1, h2, h3, h4, h5 {
   z-index: 100;
   transition: all 0.2s ease;
   border: 1px solid #444;
+  /* Пиксельный эффект */
+  image-rendering: pixelated;
 }
 
 .secret-button:hover {
